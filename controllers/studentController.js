@@ -1,19 +1,7 @@
 
 import { Student } from "../models/studentModel.js";
 
-// GET all 
-export const getAllStudents = async (req, res) => {
-  const students = await Student.findAll();
-  res.json(students);
-};
-
-// GET one
-export const getStudentById = async (req, res) => {
-  const student = await Student.findByPk(req.params.id);
-  res.json(student);
-};
-
-// CREATE
+// Create
 export const createStudent = async (req, res) => {
   console.log("Request body:", req.body);
 
@@ -21,14 +9,27 @@ export const createStudent = async (req, res) => {
   res.json(student);
 };
 
-// UPDATE
+// Read all 
+export const getAllStudents = async (req, res) => {
+  const students = await Student.findAll();
+  res.json(students);
+};
+
+// Read one
+export const getStudentById = async (req, res) => {
+  const student = await Student.findByPk(req.params.id);
+  res.json(student);
+};
+
+
+// Update
 export const updateStudent = async (req, res) => {
   const student = await Student.findByPk(req.params.id);
   await student.update(req.body);
   res.json(student);
 };
 
-// DELETE
+// Delete
 export const deleteStudent = async (req, res) => {
   const student = await Student.findByPk(req.params.id);
 
